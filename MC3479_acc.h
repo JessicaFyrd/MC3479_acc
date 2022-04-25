@@ -123,13 +123,13 @@ HAL_StatusTypeDef SEND(uint16_t port, uint8_t *pData); 					//I2C send 1 byte fu
 HAL_StatusTypeDef READ(uint16_t Address, uint8_t *pData); 				//I2C read 1 byte function
 void ACC_MC3479_init(I2C_HandleTypeDef i2c); 							//Sensor MC3479 initialization function
 void ACC_MC3479_ReadXYZ(ACC_XYZ_TypeDef*acc,ACC_XYZ_g_TypeDef *acc_g);	//Read accelerometer function and stock data on 'acc' for raw data and 'acc_g' for data in g
-void ACC_MC3479_set_mode(uint8_t mode);									//Set mode of the sensor function
-void ACC_MC3479_set_rate(uint8_t rate_value);							//Set sample rate of the sensor function
-void ACC_MC3479_set_filter(uint8_t filter_value);						//Set filter of the sensor function
-void ACC_MC3479_set_range(uint8_t range_value);							//Set range of the sensor function
-void ACC_MC3479_set_X_offset(int16_t X_offset_value); 					//X offset set function with 14-bits value : !!!Overwrites the value in register!!!
-void ACC_MC3479_set_Y_offset(int16_t Y_offset_value); 					//Y offset set function with 14-bits value : !!!Overwrites the value in register!!!
-void ACC_MC3479_set_Z_offset(int16_t Z_offset_value); 					//Z offset set function with 14-bits value : !!!Overwrites the value in register!!!
+void ACC_MC3479_set_mode(MC3479_mode_t mode);							//Set mode of the sensor function
+void ACC_MC3479_set_rate(MC3479_sr_t rate_value);						//Set sample rate of the sensor function
+void ACC_MC3479_set_filter(MC3479_filter_t filter_value);				//Set filter of the sensor function
+void ACC_MC3479_set_range(MC3479_range_t range_value);					//Set range of the sensor function
+void ACC_MC3479_set_X_offset(int16_t X_offset_value); 					//X offset set function with 15-bits value (including the sign bit) : !!!Overwrites the value in register!!!
+void ACC_MC3479_set_Y_offset(int16_t Y_offset_value); 					//Y offset set function with 15-bits value (including the sign bit) : !!!Overwrites the value in register!!!
+void ACC_MC3479_set_Z_offset(int16_t Z_offset_value); 					//Z offset set function with 15-bits value (including the sign bit) : !!!Overwrites the value in register!!!
 void ACC_MC3479_read_offsets(OFFSET_XYZ_TypeDef *offset);				//Read offsets function and stock data on 'offset'
 void ACC_MC3479_set_X_gain(uint16_t X_gain_value); 						//X gain set function with 9-bits value : !!!Overwrites the value in register!!!
 void ACC_MC3479_set_Y_gain(uint16_t Y_gain_value); 						//Y gain set function with 9-bits value : !!!Overwrites the value in register!!!

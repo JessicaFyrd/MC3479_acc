@@ -66,7 +66,7 @@ void ACC_MC3479_init(I2C_HandleTypeDef i2c){
 	mode_status = READ((uint16_t)MC3479_REG_DEV_STAT, &buf_r);
 }
 
-void ACC_MC3479_set_mode(uint8_t mode){
+void ACC_MC3479_set_mode(MC3479_mode_t mode){
 	mode_status = READ((uint16_t)MC3479_REG_MODE, &buf_r);
 	if (mode == MC3479_MODE_STANDBY){
 		buf[0] = (buf_r & 0b11000000) | MC3479_MODE_STANDBY;
@@ -81,7 +81,7 @@ void ACC_MC3479_set_mode(uint8_t mode){
 	HAL_Delay(10);
 }
 
-void ACC_MC3479_set_rate(uint8_t rate_value){
+void ACC_MC3479_set_rate(MC3479_sr_t rate_value){
 	ACC_MC3479_set_mode(MC3479_MODE_STANDBY);
 
 	buf[0] = rate_value; // Data
@@ -92,7 +92,7 @@ void ACC_MC3479_set_rate(uint8_t rate_value){
 	ACC_MC3479_set_mode(MC3479_MODE_WAKE);
 }
 
-void ACC_MC3479_set_filter(uint8_t filter_value){
+void ACC_MC3479_set_filter(MC3479_filter_t filter_value){
 	ACC_MC3479_set_mode(MC3479_MODE_STANDBY);
 
 	READ((uint16_t)MC3479_REG_RANGE_C, &buf_r);
@@ -104,7 +104,7 @@ void ACC_MC3479_set_filter(uint8_t filter_value){
 	ACC_MC3479_set_mode(MC3479_MODE_WAKE);
 }
 
-void ACC_MC3479_set_range(uint8_t range_value){
+void ACC_MC3479_set_range(MC3479_range_t range_value){
 	range_global=range_value;
 
 	ACC_MC3479_set_mode(MC3479_MODE_STANDBY);
