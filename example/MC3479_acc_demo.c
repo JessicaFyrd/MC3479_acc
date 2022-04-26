@@ -120,17 +120,17 @@ int main(void)
 
   //Offsets
   ACC_MC3479_read_offsets(&offsets);
-  //ACC_MC3479_set_X_offset((int16_t)-480); // !!!Overwrites the value in register!!!
-  //ACC_MC3479_set_Y_offset((int16_t)-810); // !!!Overwrites the value in register!!!
-  //ACC_MC3479_set_Z_offset((int16_t)1309); // !!!Overwrites the value in register!!!
-  //ACC_MC3479_read_offsets(&offset);
+  /*ACC_MC3479_set_X_offset((int16_t)-480); // !!!Overwrites the value in register!!!
+  ACC_MC3479_set_Y_offset((int16_t)-810); // !!!Overwrites the value in register!!!
+  ACC_MC3479_set_Z_offset((int16_t)1309); // !!!Overwrites the value in register!!!
+  ACC_MC3479_read_offsets(&offset);*/
 
   //Gains
   ACC_MC3479_read_gains(&gains);
-  //ACC_MC3479_set_X_gain(107);
-  //ACC_MC3479_set_Y_gain(96);
-  //ACC_MC3479_set_Z_gain(179);
-  //ACC_MC3479_read_gains(&gains);
+  /*ACC_MC3479_set_X_gain(107);
+  ACC_MC3479_set_Y_gain(96);
+  ACC_MC3479_set_Z_gain(179);
+  ACC_MC3479_read_gains(&gains);*/
 
   // Configurations
   ACC_MC3479_set_rate(MC3479_SR_125Hz);
@@ -150,8 +150,8 @@ int main(void)
 	// Store in buffer
 	//sprintf((char*)buffer,"%d\r%d\r%d\r\n",acc.x,acc.y,acc.z);
 
-	HAL_UART_Transmit(&hlpuart1, (uint8_t*)&acc, 6, 1000);			//UART transmission of raw data
-	//HAL_UART_Transmit(&hlpuart1, (uint8_t*)&acc_g, 12, 1000);		//UART transmission of data in g
+	//HAL_UART_Transmit(&hlpuart1, (uint8_t*)&acc, 6, 1000);			//UART transmission of raw data
+	HAL_UART_Transmit(&hlpuart1, (uint8_t*)&acc_g, 12, 1000);		//UART transmission of data in g
   }
     /* USER CODE END WHILE */
 
